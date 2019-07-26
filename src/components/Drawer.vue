@@ -1,11 +1,20 @@
 <template>
-  <v-navigation-drawer fixed clipped app v-model="visible">
+  <v-navigation-drawer
+    src="./../assets/drawer.jpg"
+    fixed
+    dark
+    clipped
+    app
+    v-model="visible"
+  >
+    <v-overlay color="indigo" opacity="0.5" z-index="0"></v-overlay>
     <v-list dense nav>
       <v-list-item
         v-for="route in routes"
         :key="route.path"
         router
         :to="route.path"
+        active-class="yellow"
       >
         <v-list-item-icon>
           <v-icon>{{ route.icon }}</v-icon>

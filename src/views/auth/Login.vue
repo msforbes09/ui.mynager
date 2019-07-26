@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <v-overlay color="black" z-index="0"> </v-overlay>
+    <v-overlay color="indigo" z-index="0"> </v-overlay>
     <v-content class="background">
       <v-container fill-height>
         <v-layout align-center justify-center>
-          <v-flex xs12 sm8 md4>
+          <v-flex xs12 md8 lg6 xl4>
             <v-card class="elevation-25">
               <v-toolbar color="indigo darken-3" dark flat>
                 <v-toolbar-title>Login form</v-toolbar-title>
@@ -81,7 +81,7 @@ export default {
 
 <style>
 .background {
-  background: url('./../../assets/signin.jpg') no-repeat center;
+  background: url('./../../assets/drawer.jpg') no-repeat center;
   background-size: cover;
 }
 </style>

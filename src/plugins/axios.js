@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import store from './../store/store'
 
-// axios.defaults.baseURL = 'http://api.mynager'
+axios.defaults.baseURL = 'http://api.mynager'
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 

@@ -4,7 +4,7 @@
     <show />
     <create />
     <search />
-    <v-layout class="mb-2">
+    <v-layout class="mb-2 mt-3">
       <v-spacer></v-spacer>
       <v-btn @click="create()" class="primary mr-2">Add New</v-btn>
       <v-btn @click="search" class="success ">Search</v-btn>

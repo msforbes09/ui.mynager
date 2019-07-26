@@ -3,7 +3,7 @@
     <v-app-bar-nav-icon @click.stop="drawer"></v-app-bar-nav-icon>
     <v-toolbar-title>IManager</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn color="grey" text @click="logout">
+    <v-btn color="deep-orange" @click="logout">
       Logout
       <v-icon right>mdi-exit-to-app</v-icon>
     </v-btn>
