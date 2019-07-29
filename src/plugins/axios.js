@@ -2,14 +2,16 @@ import Vue from 'vue'
 import axios from 'axios'
 import store from './../store/store'
 
-axios.defaults.baseURL = 'http://api.mynager'
+axios.defaults.baseURL = process.env.VUE_APP_API
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
 axios.interceptors.response.use(
   function(response) {
-    if (response.data.message)
+    if (response.data.message) {
       store.commit('alert', { message: response.data.message, color: 'blue' })
+    }
+    store.getters.error.reset()
     return response
   },
   function(error) {

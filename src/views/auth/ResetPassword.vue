@@ -1,9 +1,9 @@
 <template>
   <v-card class="elevation-25">
     <v-toolbar color="primary" dark flat>
-      <v-toolbar-title>Login form</v-toolbar-title>
+      <v-toolbar-title>Forgot Password</v-toolbar-title>
     </v-toolbar>
-    <form @submit.prevent="login" @keydown="error.clear($event.target.name)">
+    <form @submit.prevent="reset" @keydown="error.clear($event.target.name)">
       <v-divider></v-divider>
       <v-card-text>
         <v-container grid-list-md>
@@ -22,10 +22,19 @@
             <v-text-field
               name="password"
               type="password"
-              label="Password"
+              label="New Password"
               prepend-icon="mdi-lock-open-outline"
               v-model="credential.password"
               :error-messages="error.get('password')"
+            ></v-text-field>
+          </v-flex>
+
+          <v-flex xs12>
+            <v-text-field
+              type="password"
+              label="Password"
+              prepend-icon="mdi-lock-open-outline"
+              v-model="credential.password_confirmation"
             ></v-text-field>
           </v-flex>
         </v-container>
@@ -33,16 +42,16 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text type="submit" color="primary" :loading="loading">
-          Sign In
+          Reset Password
         </v-btn>
         <v-btn
           text
           color="warning"
           :disabled="loading"
           router
-          :to="{ name: 'forgotPassword' }"
+          :to="{ name: 'login' }"
         >
-          Forgot Password
+          Go to Login
         </v-btn>
       </v-card-actions>
     </form>
@@ -63,16 +72,14 @@ export default {
     credential: {}
   }),
   methods: {
-    login() {
-      this.$store.dispatch('login', this.credential)
+    reset() {
+      this.$store.dispatch('resetPassword', this.credential)
     }
+  },
+  mounted() {
+    this.credential.token = this.$route.params.token
   }
 }
 </script>
 
-<style>
-.background {
-  background: url('./../../assets/brz.jpg') no-repeat center;
-  background-size: cover;
-}
-</style>
+<style></style>

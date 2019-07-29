@@ -38,12 +38,12 @@
                 <v-date-picker v-model="newExpense.date" scrollable>
                   <v-spacer></v-spacer>
                   <v-btn
-                    flat
+                    text
                     color="primary"
                     @click="$refs.dialog.save(newExpense.date)"
                     >OK</v-btn
                   >
-                  <v-btn flat color="primary" @click="datepicker = false"
+                  <v-btn text color="error" @click="datepicker = false"
                     >Cancel</v-btn
                   >
                 </v-date-picker>
@@ -73,8 +73,7 @@
             >Save</v-btn
           >
           <v-btn
-            color="deep-orange"
-            dark
+            class="deep-orange white--text"
             :disabled="loading"
             @click="show = false"
             >Close</v-btn

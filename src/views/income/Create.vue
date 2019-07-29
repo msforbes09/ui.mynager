@@ -43,7 +43,7 @@
                     @click="$refs.dialog.save(newIncome.date)"
                     >OK</v-btn
                   >
-                  <v-btn text color="primary" @click="datepicker = false"
+                  <v-btn text color="error" @click="datepicker = false"
                     >Cancel</v-btn
                   >
                 </v-date-picker>
@@ -74,8 +74,7 @@
             >Save</v-btn
           >
           <v-btn
-            color="deep-orange"
-            dark
+            class="deep-orange white--text"
             :disabled="loading"
             @click="show = false"
             >Close</v-btn

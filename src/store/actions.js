@@ -20,6 +20,28 @@ export default {
         context.commit('loading', false)
       })
   },
+  sendResetPassword(context, credential) {
+    context.commit('loading', true)
+    axios
+      .post('/api/password/email', credential)
+      .then(() => {
+        router.push({ name: 'login' })
+      })
+      .finally(() => {
+        context.commit('loading', false)
+      })
+  },
+  resetPassword(context, credential) {
+    context.commit('loading', true)
+    axios
+      .post('/api/password/reset', credential)
+      .then(() => {
+        router.push({ name: 'login' })
+      })
+      .finally(() => {
+        context.commit('loading', false)
+      })
+  },
   logout(context) {
     context.commit('logging', true)
     axios.post('api/logout').then(() => {
@@ -63,7 +85,6 @@ export default {
       .then(() => {
         context.commit('createIncome', false)
         context.dispatch('getIncomes', context.getters.pagination)
-        context.getters.error.reset()
       })
       .finally(() => {
         context.commit('loading', false)
@@ -108,7 +129,6 @@ export default {
       .then(() => {
         context.commit('createExpense', false)
         context.dispatch('getExpenses', context.getters.pagination)
-        context.getters.error.reset()
         context.dispatch('getDailyExpenses', expense.date)
       })
       .finally(() => {

@@ -25,6 +25,9 @@ export default {
     logging() {
       return this.$store.getters.logging
     }
+  },
+  mounted() {
+    this.$store.dispatch('getSummary')
   }
 }
 </script>

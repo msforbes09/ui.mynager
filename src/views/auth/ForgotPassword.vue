@@ -1,9 +1,9 @@
 <template>
   <v-card class="elevation-25">
     <v-toolbar color="primary" dark flat>
-      <v-toolbar-title>Login form</v-toolbar-title>
+      <v-toolbar-title>Forgot Password</v-toolbar-title>
     </v-toolbar>
-    <form @submit.prevent="login" @keydown="error.clear($event.target.name)">
+    <form @submit.prevent="send" @keydown="error.clear($event.target.name)">
       <v-divider></v-divider>
       <v-card-text>
         <v-container grid-list-md>
@@ -17,32 +17,21 @@
               autofocus
             ></v-text-field>
           </v-flex>
-
-          <v-flex xs12>
-            <v-text-field
-              name="password"
-              type="password"
-              label="Password"
-              prepend-icon="mdi-lock-open-outline"
-              v-model="credential.password"
-              :error-messages="error.get('password')"
-            ></v-text-field>
-          </v-flex>
         </v-container>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text type="submit" color="primary" :loading="loading">
-          Sign In
+          Send Password Reset
         </v-btn>
         <v-btn
           text
           color="warning"
           :disabled="loading"
           router
-          :to="{ name: 'forgotPassword' }"
+          :to="{ name: 'login' }"
         >
-          Forgot Password
+          Go to Login
         </v-btn>
       </v-card-actions>
     </form>
@@ -63,8 +52,8 @@ export default {
     credential: {}
   }),
   methods: {
-    login() {
-      this.$store.dispatch('login', this.credential)
+    send() {
+      this.$store.dispatch('sendResetPassword', this.credential)
     }
   }
 }

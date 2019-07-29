@@ -10,8 +10,24 @@ const router = new Router({
   routes: [
     {
       path: '/login',
-      name: 'login',
-      component: () => import('./views/auth/Login.vue'),
+      component: () => import('./views/auth/Main.vue'),
+      children: [
+        {
+          path: '',
+          name: 'login',
+          component: () => import('./views/auth/Login.vue')
+        },
+        {
+          path: '/forgot-password',
+          name: 'forgotPassword',
+          component: () => import('./views/auth/ForgotPassword.vue')
+        },
+        {
+          path: '/password/reset/:token',
+          name: 'resetPassword',
+          component: () => import('./views/auth/ResetPassword.vue')
+        }
+      ],
       meta: {
         requiresVisitor: true
       }
@@ -63,6 +79,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  store.getters.error.reset()
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.getters.loggedIn) {
       next({
