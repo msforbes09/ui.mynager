@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <v-overlay :value="logging" color="black">
-      <v-progress-circular indeterminate size="64"></v-progress-circular>
-    </v-overlay>
+    <loader />
     <alert />
     <drawer />
     <navbar />
@@ -19,14 +17,12 @@ export default {
   components: {
     navbar: () => import('./../components/Navbar.vue'),
     drawer: () => import('./../components/Drawer.vue'),
-    alert: () => import('./../components/Alert.vue')
+    alert: () => import('./../components/Alert.vue'),
+    loader: () => import('./../components/Loader.vue')
   },
-  computed: {
-    logging() {
-      return this.$store.getters.logging
-    }
-  },
+
   mounted() {
+    this.$store.commit('logging', true)
     this.$store.dispatch('getSummary')
   }
 }

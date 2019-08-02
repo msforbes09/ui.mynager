@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import axios from 'axios'
 import store from './../store/store'
 
@@ -6,6 +5,7 @@ axios.defaults.baseURL = process.env.VUE_APP_API
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
+// global success and error handler
 axios.interceptors.response.use(
   function(response) {
     if (response.data.message) {
@@ -34,5 +34,3 @@ axios.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
-Vue.prototype.axios = axios

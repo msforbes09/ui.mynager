@@ -60,6 +60,7 @@ export default {
     axios.get('/api/summary').then(res => {
       context.commit('setUser', res.data)
       context.commit('loading', false)
+      context.commit('logging', false)
     })
   },
   getIncomes(context, pagination) {
