@@ -21,7 +21,7 @@
         :footer-props="{ itemsPerPageOptions: [10, 50, 100] }"
       >
         <template v-slot:item.action="{ item }">
-          <v-btn small icon @click="showDaily(item.date)">
+          <v-btn small icon @click="showDaily(item.date)" :disabled="loading">
             <v-icon class="primary--text text--lighten-2"
               >mdi-calendar-today</v-icon
             >

@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <loader />
     <alert />
     <drawer />
     <navbar />
+    <loader />
     <v-content class="grey lighten-4">
       <v-container container--fluid>
         <router-view></router-view>

@@ -14,7 +14,7 @@
         hide-default-footer
       >
         <template v-slot:item.action="{ item }">
-          <v-btn small icon @click="showExpense(item.id)">
+          <v-btn small icon @click="showExpense(item.id)" :disabled="loading">
             <v-icon class="primary--text text--lighten-2"
               >mdi-open-in-app</v-icon
             >

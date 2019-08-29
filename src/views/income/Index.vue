@@ -28,7 +28,7 @@
         :footer-props="{ itemsPerPageOptions: [10, 50, 100] }"
       >
         <template v-slot:item.action="{ item }">
-          <v-btn small icon @click="showIncome(item.id)">
+          <v-btn small icon @click="showIncome(item.id)" :disabled="loading">
             <v-icon class="primary--text text--lighten-2"
               >mdi-open-in-app</v-icon
             >
